@@ -1,16 +1,35 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import Navbar from '@/components/Navbar';
+import useCurrentUser from '@/hooks/userCurrentUser';
+import { NextPageContext } from 'next'
+import { getSession, signOut } from 'next-auth/react'
 
-const inter = Inter({ subsets: ['latin'] })
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+  
+  console.log(session);
+  
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/auth',
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {}
+  }
+}
 
 export default function Home() {
+  const { data: user } = useCurrentUser();
+  console.log(user?.name);
+  
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <h1 className='text-xl text-green-600'>
-       Hello Next JS
-      </h1>
-    </main>
+    <>
+      <Navbar />
+    </>
   )
 }
