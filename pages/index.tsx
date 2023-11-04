@@ -6,7 +6,7 @@ import { getSession, signOut } from 'next-auth/react'
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
   
-  console.log(session);
+  //console.log(session);
   
   if (!session) {
     return {
@@ -24,12 +24,21 @@ export async function getServerSideProps(context: NextPageContext) {
 
 export default function Home() {
   const { data: user } = useCurrentUser();
-  console.log(user?.name);
+
+  //console.log(user?.name);
   
 
   return (
     <>
       <Navbar />
+      {/* <div className='h-96 bg-slate-500'></div>
+      <div className='h-96 bg-slate-500'></div>
+      <div className='h-96 bg-slate-500'></div>
+      <div className='h-96 bg-slate-500'></div>
+      <div className='h-96 bg-slate-500'></div>
+      <div className='h-96 bg-slate-500'></div>
+      <div className='h-96 bg-slate-500'></div>
+      <div className='h-96 bg-slate-500'></div> */}
     </>
   )
 }
