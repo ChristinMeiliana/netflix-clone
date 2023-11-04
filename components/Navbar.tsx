@@ -40,7 +40,6 @@ const Navbar = () => {
     
   return (
       <nav className='w-full fixed z-40'>
-          Navbar
           <div className=
           {`
           px-4
