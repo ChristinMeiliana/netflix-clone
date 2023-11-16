@@ -8,8 +8,7 @@ const useMovieList = () => {
         revalidateOnFocus: false,
         revalidateOnReconnect:false
     })
-
-    console.log(data);
+    
     
     return {
         data,

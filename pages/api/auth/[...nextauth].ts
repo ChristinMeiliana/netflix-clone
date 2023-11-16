@@ -43,6 +43,8 @@ export default NextAuth({
                         email: credentials.email
                     }
                 });
+                console.log("user:",user);
+                
 
                 if (!user || !user.hashedPassword) {
                     throw new Error('Email does not exist')
