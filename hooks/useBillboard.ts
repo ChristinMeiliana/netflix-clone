@@ -8,7 +8,7 @@ const useBillboard = () => {
         revalidateOnReconnect: false,
     })
 
-    console.log("usebillboard :",data);
+    console.log("usebillboard 3:",data);
     
 
     return {
