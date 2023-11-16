@@ -4,7 +4,7 @@ import axios from 'axios';
 import {AiOutlineCheck, AiOutlinePlus} from 'react-icons/ai'
 
 import useCurrentUser from '@/hooks/userCurrentUser';
-import useFavorites from '@/hooks/useFavorite';
+import useFavorites from '@/hooks/useFavorites';
 
 interface FavoriteButtonProps {
     movieId: string;

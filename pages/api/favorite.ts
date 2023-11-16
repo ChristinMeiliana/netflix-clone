@@ -6,21 +6,19 @@ import serverAuth from '@/lib/serverAuth';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
-        
-        if (req?.method === 'POST') {
+        if (req.method === 'POST') {
             const { currentUser } = await serverAuth(req);
-
             const { movieId } = req.body;
-            console.log("id movie :", req.body, movieId);
-            console.log("user  current :",currentUser);
+
+            // console.log("id movie :", req.body, movieId);
+            // console.log("user  current :",currentUser);
             
             const existingMovie = await prismadb.movie.findUnique({
                 where: {
                     id: movieId
                 }
             })
-            console.log("existingMovie",existingMovie);
-            
+            // console.log("existingMovie",existingMovie);
 
             if (!existingMovie) throw new Error('Invalid ID');
 
@@ -38,7 +36,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
         if (req.method === 'DELETE') {
             const { currentUser } = await serverAuth(req);
-
             const { movieId } = req.body;
 
             const existingMovie = await prismadb.movie.findUnique({
@@ -65,8 +62,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(405).end();
 
     } catch (error) {
-        console.log(error);
         return res.status(400).end()
-        
     }
 }
