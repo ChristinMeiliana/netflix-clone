@@ -6,10 +6,7 @@ const useBillboard = () => {
         revalidateIfStale: false,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,
-    })
-
-    console.log("usebillboard 3:",data);
-    
+    })    
 
     return {
         data, 

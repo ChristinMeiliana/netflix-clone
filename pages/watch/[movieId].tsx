@@ -9,8 +9,6 @@ const Watch = () => {
     const { movieId } = router.query;
 
     const { data } = useMovie(movieId as string);
-
-    console.log(data);
     
 
     return (

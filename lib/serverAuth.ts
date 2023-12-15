@@ -7,8 +7,6 @@ const serverAuth = async (req: NextApiRequest) => {
     const session = await getSession({ req })
         
     if (!session?.user?.email) {
-        console.log("masuk sini");
-        
         throw new Error('Not signed in')
     }
 
@@ -17,13 +15,12 @@ const serverAuth = async (req: NextApiRequest) => {
             email: session.user.email
         }
     })
-    console.log("current sign in:",currentUser);
     
 
     if (!currentUser) {
         throw new Error('Not signed in')
     } 
-
+    
     return { currentUser }
 }
 

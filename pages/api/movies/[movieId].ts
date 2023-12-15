@@ -22,7 +22,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 id:movieId
             }
         })
-        console.log("movies :", movies);
 
         return res.status(200).json(movies);
     } catch (error) {
