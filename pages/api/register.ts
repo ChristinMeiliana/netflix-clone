@@ -9,14 +9,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
         const { email, username, password } = req.body;
-        console.log(req.body);
         
         const existingUser = await prismadb.user.findUnique({
             where: {
                 email
             }
         })
-        console.log("Existing :",existingUser);
         
         if (existingUser) {
             return res.status(422).json({error : 'Email token'})
@@ -36,7 +34,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         return res.status(200).json(user)
     } catch (err) {
-        console.log(err);
         return res.status(400).end()
         
     }

@@ -1,24 +1,25 @@
-import { NextApiRequest, NextApiResponse } from 'next'
 import { without } from 'lodash';
 
 import prismadb from '@/lib/prismadb';
 import serverAuth from '@/lib/serverAuth';
+import { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse){
     try {
         if (req.method === 'POST') {
+            console.log("get post",req,res);
+            
             const { currentUser } = await serverAuth(req);
-            const { movieId } = req.body;
 
-            // console.log("id movie :", req.body, movieId);
-            // console.log("user  current :",currentUser);
+            console.log("get current :",currentUser);
+            
+            const { movieId } = req.body;
             
             const existingMovie = await prismadb.movie.findUnique({
                 where: {
                     id: movieId
                 }
             })
-            // console.log("existingMovie",existingMovie);
 
             if (!existingMovie) throw new Error('Invalid ID');
 
@@ -32,6 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     }
                 }
             })
+            
             return res.status(200).json(user);
         }
         if (req.method === 'DELETE') {
@@ -62,6 +64,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(405).end();
 
     } catch (error) {
+        console.log("masuk error ya");
+        
         return res.status(400).end()
     }
 }

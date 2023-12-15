@@ -43,7 +43,6 @@ export default NextAuth({
                         email: credentials.email
                     }
                 });
-                console.log("user:",user);
                 
 
                 if (!user || !user.hashedPassword) {

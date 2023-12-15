@@ -8,12 +8,11 @@ import useMovieList from '@/hooks/useMovieList';
 import useCurrentUser from '@/hooks/userCurrentUser';
 import { NextPageContext } from 'next'
 import { getSession, signOut } from 'next-auth/react'
+import { ImSpinner } from "react-icons/im";
 
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
-  
-  //console.log(session);
-  
+    
   if (!session) {
     return {
       redirect: {
