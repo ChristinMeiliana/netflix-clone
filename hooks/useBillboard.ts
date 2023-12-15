@@ -6,9 +6,7 @@ const useBillboard = () => {
         revalidateIfStale: false,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,
-    })
-    console.log("is Loading :",isLoading);
-    
+    })    
 
     return {
         data, 

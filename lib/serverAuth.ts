@@ -5,7 +5,6 @@ import prismadb from '@/lib/prismadb';
 
 const serverAuth = async (req: NextApiRequest) => {
     const session = await getSession({ req })
-    console.log("ya session:",session);
         
     if (!session?.user?.email) {
         throw new Error('Not signed in')
@@ -21,7 +20,6 @@ const serverAuth = async (req: NextApiRequest) => {
     if (!currentUser) {
         throw new Error('Not signed in')
     } 
-    console.log("current user :",session);
     
     return { currentUser }
 }

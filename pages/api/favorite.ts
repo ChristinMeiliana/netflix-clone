@@ -6,12 +6,8 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse){
     try {
-        if (req.method === 'POST') {
-            console.log("get post",req,res);
-            
+        if (req.method === 'POST') {            
             const { currentUser } = await serverAuth(req);
-
-            console.log("get current :",currentUser);
             
             const { movieId } = req.body;
             
@@ -63,9 +59,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
         return res.status(405).end();
 
-    } catch (error) {
-        console.log("masuk error ya");
-        
+    } catch (error) {        
         return res.status(400).end()
     }
 }
